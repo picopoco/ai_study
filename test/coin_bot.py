@@ -6,22 +6,22 @@ from operator import eq
 
 class korbit:
     reqBTC = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=btc_krw' , headers={'User-Agent': 'Mozilla/5.0'})
-    readBTC = urlopen(reqBTC).read()
+    readBTC = urlopen(reqBTC).read().decode('utf-8')
     jsonBTC = json.loads(readBTC)
     FindBTC = jsonBTC['last']
     BTC = int(FindBTC)
     reqETH = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=eth_krw' , headers={'User-Agent': 'Mozilla/5.0'})
-    readETH = urlopen(reqETH).read()
+    readETH = urlopen(reqETH).read().decode('utf-8')
     jsonETH = json.loads(readETH)
     FindETH = jsonETH['last']
     ETH = int(FindETH)
     reqETC = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=etc_krw' , headers={'User-Agent': 'Mozilla/5.0'})
-    readETC = urlopen(reqETC).read()
+    readETC = urlopen(reqETC).read().decode('utf-8')
     jsonETC = json.loads(readETC)
     FindETC = jsonETC['last']
     ETC = int(FindETC)
     reqXRP = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=xrp_krw' , headers={'User-Agent': 'Mozilla/5.0'})
-    readXRP = urlopen(reqXRP).read()
+    readXRP = urlopen(reqXRP).read().decode('utf-8')
     jsonXRP = json.loads(readXRP)
     FindXRP = jsonXRP['last']
     XRP = int(FindXRP)
@@ -36,7 +36,6 @@ class tele_bot(object):
         print(content_type, chat_type, chat_id)
 
         if content_type == 'text':
-            # self.MSGQ.put(msg['text'])
             if eq(msg['text'],'/BTC'):
                 self.bot.sendMessage(chat_id, "1 BTC(KRW)" + str(korbit.BTC))
             elif eq(msg['text'],'/ETH'):
@@ -50,11 +49,12 @@ class tele_bot(object):
 
 if __name__ == "__main__":
 
-    TOKEN = '텔레그램 @BotFather에게 받으셔서 이곳에 넣어주세요'
+    # TOKEN = '397366251:AAFsSwES9EuJIAGVXNHh3lZ9eHX3XxtN-zU'
+    TOKEN = '409954246:AAG27LqUuaLEJYwIDJX5DXCYvplzfwawmlE'
     chat = tele_bot(TOKEN)
     print('Listening ...')
 
     # Keep the program running.
     while 1:
         time.sleep(10)
-#
+#You can use this token to access HTTP API:
