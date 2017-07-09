@@ -1,6 +1,4 @@
-# http://serv.cusp.nyu.edu/files/jsalamon/datasets/content_loader.php?id=1
 # http://www.kdnuggets.com/2016/09/urban-sound-classification-neural-networks-tensorflow.html/2
-# http://serv.cusp.nyu.edu/files/jsalamon/datasets/content_loader.php?id=2
 import glob
 import os
 import librosa
