@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 
 
-TRAIN_DIR = './data/train/'
-TEST_DIR = './data/test/'
+TRAIN_DIR = '../dog_cat_cnn/data/train/'
+TEST_DIR = '../dog_cat_cnn/data/test/'
 IMG_SIZE = 50
 LR = 1e-3
 
