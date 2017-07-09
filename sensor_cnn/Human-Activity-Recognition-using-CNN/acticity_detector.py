@@ -1,3 +1,5 @@
+# http://www.kdnuggets.com/2016/11/implementing-cnn-human-activity-recognition-tensorflow.html/2
+# http://www.cis.fordham.edu/wisdm/dataset.php
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -121,7 +123,8 @@ def apply_max_pool(x, kernel_size, stride_size):
 
 
 import h5py
-f = h5py.File('test_20.h5','r')
+f = h5py.File('../../data/activity/h5/test_20.h5','r')
+
 labels = np.array( f['data_1']['label'] )
 segments = np.array( f['data_1']['segment'] )
 
@@ -157,15 +160,9 @@ total_batches = train_x.shape[0] // batch_size
 X = tf.placeholder(tf.float32, shape=[None,input_height,input_width,num_channels])
 Y = tf.placeholder(tf.float32, shape=[None,num_labels])
 
-# c = apply_depthwise_conv(X,kernel_size,num_channels,depth)   #(?,1,90,3) - > #(?,1,31,180)
-# p = apply_max_pool(c,20,2)                                      #(?,1,31,180) - > #(?,1,60,180)
-# c = apply_depthwise_conv(p,6,depth*num_channels,depth//10)     #(?,1,60,180) - > #(?,1,1,1080)
-
 c = apply_depthwise_conv(X,kernel_size,num_channels,depth)   #(?,1,90,3) - > #(?,1,31,180)
-p = apply_max_pool(c,2,2)                                      #(?,1,31,180) - > #(?,1,15,180)
-c = apply_depthwise_conv(p,3,depth*num_channels,depth//10)     #(?,1,15,180) - > #(?,1,13,1080)
-
-
+p = apply_max_pool(c,20,2)                                      #(?,1,31,180) - > #(?,1,60,180)
+c = apply_depthwise_conv(p,6,depth*num_channels,depth//10)     #(?,1,60,180) - > #(?,1,1,1080)
 
 
 shape = c.get_shape().as_list()
@@ -178,7 +175,6 @@ f = tf.nn.tanh(tf.add(tf.matmul(c_flat, f_weights_l1),f_biases_l1))
 out_weights = weight_variable([num_hidden, num_labels])
 out_biases = bias_variable([num_labels])
 y_ = tf.nn.softmax(tf.matmul(f, out_weights) + out_biases)
-
 
 ###
 

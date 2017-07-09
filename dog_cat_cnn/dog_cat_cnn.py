@@ -13,8 +13,9 @@ import matplotlib.pyplot as plt
 
 
 
-TRAIN_DIR = '../dog_cat_cnn/data/train/'
-TEST_DIR = '../dog_cat_cnn/data/test/'
+TRAIN_DIR = '../data/dog_cat_cnn/train/'
+TEST_DIR = '../data/dog_cat_cnn/test/'
+NPY_DIR = '../data/dog_cat_cnn/'
 IMG_SIZE = 50
 LR = 1e-3
 
@@ -57,13 +58,15 @@ def process_test_data():
 
 
 try:
-    train_data = np.load('train_data.npy')
+    file = NPY_DIR + 'train_data.npy'
+    train_data = np.load(file)
 except:
     train_data = create_train_data()
 
 
 try:
-    test_data = np.load('test_data.npy')
+    file = NPY_DIR + 'test_data.npy'
+    test_data = np.load(file)
 except:
     test_data = process_test_data()
 
