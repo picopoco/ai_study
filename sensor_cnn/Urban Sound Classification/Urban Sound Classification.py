@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 # http://serv.cusp.nyu.edu/files/jsalamon/datasets/content_loader.php?id=1
 # https://aqibsaeed.github.io/2016-09-03-urban-sound-classification-part-1/
 # http://serv.cusp.nyu.edu/files/jsalamon/datasets/content_loader.php?id=2
 # https://tensorflow.blog/2016/11/06/urban-sound-classification/
+=======
+# http://www.kdnuggets.com/2016/09/urban-sound-classification-neural-networks-tensorflow.html/2
+>>>>>>> e26f9ff52e34f2178184dab24caf7a43878eb707
 import glob
 import os
 import soundfile as sf
@@ -190,5 +194,10 @@ plt.plot(cost_history)
 plt.axis([0, training_epochs, 0, np.max(cost_history)])
 plt.show()
 
+<<<<<<< HEAD
 # p, r, f, s = precision_recall_fscore_support(y_true, y_pred, average='micro')
 # print ("F-Score:", round(f, 3))
+=======
+p, r, f, s = precision_recall_fscore_support(y_true, y_pred, average='micro')
+print ("F-Score:", round(f, 3))
+>>>>>>> e26f9ff52e34f2178184dab24caf7a43878eb707
